@@ -45,21 +45,25 @@ public class MainActivity extends AppCompatActivity {
             followBtn.setText(R.string.follow);
         }
 
-        followBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Button followBtn = findViewById(R.id.followBtn);
-                if (student1.followed){
-                    followBtn.setText(R.string.follow);
-                    Toast.makeText(getApplicationContext(),"Unfollowed",Toast.LENGTH_SHORT).show();
-                } else {
-                    followBtn.setText(R.string.unfollow);
-                    Toast.makeText(getApplicationContext(),"Followed",Toast.LENGTH_SHORT).show();
-                }
-
-                //Update followed status accordingly
-                student1.followed = !student1.followed;
+        followBtn.setOnClickListener(v -> {
+            Button followBtn1 = findViewById(R.id.followBtn);
+            if (student1.followed){
+                followBtn1.setText(R.string.follow);
+                Toast.makeText(getApplicationContext(),"Unfollowed",Toast.LENGTH_SHORT).show();
+            } else {
+                followBtn1.setText(R.string.unfollow);
+                Toast.makeText(getApplicationContext(),"Followed",Toast.LENGTH_SHORT).show();
             }
+
+            //Update followed status accordingly
+            student1.followed = !student1.followed;
         });
+
+
+    Button messageBtn = findViewById(R.id.messageBtn);
+           messageBtn.setOnClickListener(v -> {
+                  Intent messageIntent = new Intent(MainActivity.this, MessageGroup.class);
+                  startActivity(messageIntent);
+                    });
+            }
     }
-}
